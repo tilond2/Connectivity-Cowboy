@@ -10,6 +10,7 @@ public class Rope : MonoBehaviour {
     public int segmentLength = 35;
     public float lineWidth = 0.1f;
     public bool active;
+    public GameObject lassoCollision;
 
     // Use this for initialization
     void Start() {
@@ -22,6 +23,7 @@ public class Rope : MonoBehaviour {
         }
 
         active = true;
+
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class Rope : MonoBehaviour {
 
     private void FixedUpdate() {
         this.Simulate();
+        //lasso.offset = this.ropeSegments[this.segmentLength - 12].posNow;
     }
 
     private void Simulate() {
@@ -53,6 +56,8 @@ public class Rope : MonoBehaviour {
             
         }
 
+        //lasso = this.ropeSegments[this.segmentLength - 1].posNow;
+
         this.ropeSegments[this.segmentLength - 1] = this.ropeSegments[this.segmentLength - 12];
 
         
@@ -61,6 +66,12 @@ public class Rope : MonoBehaviour {
         for (int i = 0; i < 50; i++) {
             this.ApplyConstraint();
         }
+
+        this.lassoCollision.transform.position = this.ropeSegments[this.segmentLength - 12].posNow;
+        //this.ropeSegments[this.segmentLength - 1].posNow = this.lassoCollision.transform.position;
+        RopeSegment attachPoint = this.ropeSegments[this.segmentLength - 1];
+        attachPoint.posNow = this.lassoCollision.transform.position;
+        this.ropeSegments[this.segmentLength - 1] = attachPoint;
     }
 
     private void ApplyConstraint() {
