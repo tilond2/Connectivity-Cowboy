@@ -46,19 +46,16 @@ public class Rope : MonoBehaviour {
     private void FixedUpdate() {
         if(caught){
             float fallSpeed = -.01f;
-            /*if(this.roped.transform.position.x < -10.5|| this.roped.transform.position.x > 10.5) {
-                this.roped.transform.Translate(new Vector3(0f, fallSpeed, 0f));
-            }else*/
             if (this.roped.transform.position.x < this.transform.position.x) {
                 if (influence > 0f) {
                     this.roped.transform.Translate(new Vector3(influence / 40f, fallSpeed, 0));
-                } else if(this.roped.transform.position.x>-10.5){
+                } else {
                     this.roped.transform.Translate(new Vector3(-.05f, fallSpeed, 0));
                 }
             } else {
                 if(influence <= 0f) {
                     this.roped.transform.Translate(new Vector3(influence / 40f, fallSpeed, 0));
-                } else if(this.roped.transform.position.x<10.5){
+                } else {
                     this.roped.transform.Translate(new Vector3(.05f, fallSpeed, 0));
                 }
             }
