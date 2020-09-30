@@ -128,7 +128,7 @@ public class Area : MonoBehaviour
         {
             gm.AddScore(-10);
             GameObject clone = (GameObject)Instantiate(sad, new Vector2(transform.position.x, transform.position.y - .65f), Quaternion.identity);
-            Destroy(clone, 1.0f);
+            Destroy(clone, 1.8f);
         }
         else
         {
@@ -142,7 +142,7 @@ public class Area : MonoBehaviour
             {
                 clone = (GameObject)Instantiate(happy, new Vector2(transform.position.x, transform.position.y - .65f), Quaternion.identity);
             }
-            Destroy(clone, 1.0f);
+            Destroy(clone, 1.8f);
         }
         firstPerson._Delete();
         secondPerson._Delete();
