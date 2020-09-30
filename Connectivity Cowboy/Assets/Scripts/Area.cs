@@ -44,14 +44,21 @@ public class Area : MonoBehaviour
                 else { person1 = collision.gameObject; }
             }
             person1.transform.position = new Vector2(transform.position.x - .6f, transform.position.y + .6f);
-            if (person1.GetComponent<Person>().ropeObject) { person1.GetComponent<Person>().ropeObject.caught = false; person1.GetComponent<Person>().ropeObject = null; }
-
+            if (person1.GetComponent<Person>().ropeObject) { person1.GetComponent<Person>().ropeObject.caught = false; 
+                person1.GetComponent<Person>().ropeObject = null;
                 person1.GetComponent<Person>().canCatch = false;
+                person1.GetComponent<Person>().sitting = true;
+            }
+
+            
+
             if (person2) {
                 person2.transform.position = new Vector2(transform.position.x + .6f, transform.position.y + .6f);
-                if (person2.GetComponent<Person>().ropeObject) { person2.GetComponent<Person>().ropeObject.caught = false; person2.GetComponent<Person>().ropeObject = null; }
+                if (person2.GetComponent<Person>().ropeObject) { person2.GetComponent<Person>().ropeObject.caught = false; person2.GetComponent<Person>().ropeObject = null; 
 
                 person2.GetComponent<Person>().canCatch = false;
+                person2.GetComponent<Person>().sitting = true;
+                }
             };
             StartCoroutine(Checking());
             

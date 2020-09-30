@@ -259,7 +259,7 @@ MonoBehaviour:
   ropeObject: {fileID: 0}
   bench: {fileID: 0}
   roped: 0
-  frameRate: 100
+  frameRate: 50
   frame: 0
   state: 1
   direction: 1
@@ -274,7 +274,6 @@ MonoBehaviour:
   c3: whitewhite
   canCatch: 0
   sitting: 0
-  self: {fileID: 328074887082001593}
 --- !u!1 &328074887131751151
 GameObject:
   m_ObjectHideFlags: 0

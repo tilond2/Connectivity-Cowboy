@@ -28,8 +28,7 @@ public class Spawner : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         spawn();
         spawn();
-        spawn();
-        spawn();
+        
 
         
     }
@@ -37,11 +36,11 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gm.time%6 == 0 && s == false)
+        if (gm.time%5 == 0 && s == false)
         {
             spawnCheck = true;
         }
-        else if(gm.time % 6 == 0 && s == true)
+        else if(gm.time % 5 == 0 && s == true)
         {
             spawnCheck = false;
         }
