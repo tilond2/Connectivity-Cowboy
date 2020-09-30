@@ -29,6 +29,7 @@ public class Person : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //roped = false;
         Characteristics = new List<string>(new string[3] { c1, c2, c3});
         walkDist = 10f;
         canCatch = true;
@@ -40,10 +41,10 @@ public class Person : MonoBehaviour
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
-        rope();
+        if(collision.gameObject.name == "lassoCollison")rope();
     }
     public void OnCollisionEnter(Collision collision) {
-        rope();
+        if (collision.gameObject.name == "lassoCollison") rope();
     }
 
     private void FixedUpdate() {

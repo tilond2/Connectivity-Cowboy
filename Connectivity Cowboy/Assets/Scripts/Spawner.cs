@@ -60,9 +60,12 @@ public class Spawner : MonoBehaviour
 
     public void spawn() {
         int i = Random.Range(0, people.Count);
-        float x = Random.Range(xMin, xMax);
+        //float x = Random.Range(xMin, xMax);
         //float y = Random.Range(yMin, yMax);
-
+        float x = Random.Range(0.1f, 1.9f);
+        if (x < 1f) {
+            x = -10.5f;
+        } else x = 10.5f;
         float y = Random.Range(-1.5f, 1.5f);
 
         Instantiate(people[i], new Vector3(x, y, 0), Quaternion.identity);
