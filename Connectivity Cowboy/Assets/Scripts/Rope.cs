@@ -142,7 +142,7 @@ public class Rope : MonoBehaviour {
         this.ropeSegments[0] = firstSegment;
         if(caught){
             RopeSegment end = this.ropeSegments[this.segmentLength - 1];
-            end.posNow = new Vector2(this.roped.transform.position.x,this.roped.transform.position.y-.5f);
+            end.posNow = new Vector2(this.roped.transform.position.x+.125f,this.roped.transform.position.y-.5f);
             this.ropeSegments[this.segmentLength - 1] = end;
         }
 
