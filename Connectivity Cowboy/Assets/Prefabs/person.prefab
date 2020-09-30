@@ -274,6 +274,7 @@ MonoBehaviour:
   c3: whitewhite
   canCatch: 0
   sitting: 0
+  self: {fileID: 328074887082001593}
 --- !u!1 &328074887131751151
 GameObject:
   m_ObjectHideFlags: 0
