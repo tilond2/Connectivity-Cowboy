@@ -62,7 +62,7 @@ public class Area : MonoBehaviour
     IEnumerator Checking()
     {
 
-        yield return new WaitForSeconds(12);
+        yield return new WaitForSeconds(14);
         if (!person2)
         {
             if (person1)
