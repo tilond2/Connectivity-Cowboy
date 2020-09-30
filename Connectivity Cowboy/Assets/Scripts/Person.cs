@@ -27,7 +27,6 @@ public class Person : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetInt("person", PlayerPrefs.GetInt("person") + 1);
         Characteristics = new List<string>(new string[] { c1, c2, c3});
         walkDist = 10f;
         canCatch = true;
@@ -53,7 +52,6 @@ public class Person : MonoBehaviour
         roped = false;
         ropeObject.caught = false;
         bench.person1 = null;
-        PlayerPrefs.SetInt("person", PlayerPrefs.GetInt("person") - 1);
         Destroy(this.gameObject);
     }
 

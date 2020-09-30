@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     private int score;
     private Text scoreCount;
     public float timer;
-    public int time = 60;
+    public int time;
     private Text timeDisplay;
     bool timerRunning;
     bool endGame;
@@ -18,9 +18,7 @@ public class GameManager : MonoBehaviour
         scoreCount = GameObject.Find("Score").GetComponent<Text>();
         timeDisplay = GameObject.Find("Timer").GetComponent<Text>();
         timer = 60f;
-        time = 60;
         timerRunning = true;
-        InvokeRepeating("Tick", 1f, 1f);
     }
 
     // Update is called once per frame
@@ -29,11 +27,11 @@ public class GameManager : MonoBehaviour
         scoreCount.text = score.ToString();
         timeDisplay.text = time.ToString();
 
-        /*if (timerRunning)
+        if (timerRunning)
         {
             timer -= Time.deltaTime;
             time = Mathf.FloorToInt(timer);
-        }*/
+        }
         
         if (timer < 0) { 
             timerRunning = false;
@@ -43,10 +41,8 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(EndGame());
         }
-    }
+        
 
-    void Tick() {
-        time--;
     }
 
     public void AddScore(int s)
