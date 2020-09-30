@@ -16,7 +16,7 @@ public class Area : MonoBehaviour
     public GameObject happy;
     public GameObject excited;
     private GameManager gm;
-    bool checking;
+    private bool checking;
     
     public bool isCoroutineReady;
 
@@ -67,7 +67,7 @@ public class Area : MonoBehaviour
         {
             if (person1)
             {
-                person1.GetComponent<Person>().Delete();
+                person1.GetComponent<Person>()._Delete();
                 person1 = null;
             }
         }
@@ -130,8 +130,8 @@ public class Area : MonoBehaviour
             }
             Destroy(clone, 1.0f);
         }
-        firstPerson.Delete();
-        secondPerson.Delete();
+        firstPerson._Delete();
+        secondPerson._Delete();
         p1 = null;
         p2 = null;
         checking = false;

@@ -50,7 +50,7 @@ public class Person : MonoBehaviour
     private void FixedUpdate() {
        
     }
-    public void Delete()
+    public void _Delete()
     {
         roped = false;
         if (ropeObject) ropeObject.caught = false;
@@ -63,14 +63,14 @@ public class Person : MonoBehaviour
     void Update()
     {
         if (this.transform.position.y < -13f || this.transform.position.y > 13f) {
-            roped = false;
+            //roped = false;
             if (ropeObject) ropeObject.caught = false;
-            Delete();
+            _Delete();
         }
         if (this.transform.position.x < -13f || this.transform.position.x > 13f) {
-            roped = false;
+            //roped = false;
             if (ropeObject) ropeObject.caught = false;
-            Delete();
+            _Delete();
         }
         //this.transform.position.Set(this.transform.position.x+1f,this.transform.position.y,this.transform.position.z);
         if (traveled >= walkDist) {
