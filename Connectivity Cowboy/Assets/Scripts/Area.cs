@@ -43,12 +43,12 @@ public class Area : MonoBehaviour
                 if (person1) { person2 = collision.gameObject;  }
                 else { person1 = collision.gameObject; }
             }
-            person1.transform.position = new Vector2(transform.position.x - 1f, transform.position.y - 1f);
+            person1.transform.position = new Vector2(transform.position.x - .6f, transform.position.y + .6f);
             if (person1.GetComponent<Person>().ropeObject) { person1.GetComponent<Person>().ropeObject.caught = false; person1.GetComponent<Person>().ropeObject = null; }
 
                 person1.GetComponent<Person>().canCatch = false;
             if (person2) {
-                person2.transform.position = new Vector2(transform.position.x + 1f, transform.position.y - 1f);
+                person2.transform.position = new Vector2(transform.position.x + .6f, transform.position.y + .6f);
                 if (person2.GetComponent<Person>().ropeObject) { person2.GetComponent<Person>().ropeObject.caught = false; person2.GetComponent<Person>().ropeObject = null; }
 
                 person2.GetComponent<Person>().canCatch = false;
@@ -86,8 +86,8 @@ public class Area : MonoBehaviour
     void Talking()
     {
         
-        p1.transform.position = new Vector2(transform.position.x - 1f, transform.position.y-1f);
-        p2.transform.position = new Vector2(transform.position.x + 1f, transform.position.y - 1f);
+        p1.transform.position = new Vector2(transform.position.x - .6f, transform.position.y+.6f);
+        p2.transform.position = new Vector2(transform.position.x + .6f, transform.position.y + .6f);
 
         Person firstPerson = p1.GetComponent<Person>();
         Person secondPerson = p2.GetComponent<Person>();
@@ -113,7 +113,7 @@ public class Area : MonoBehaviour
         if (matchCount == 0)
         {
             gm.AddScore(-10);
-            GameObject clone = (GameObject)Instantiate(sad, transform.position, Quaternion.identity);
+            GameObject clone = (GameObject)Instantiate(sad, new Vector2(transform.position.x, transform.position.y - .65f), Quaternion.identity);
             Destroy(clone, 1.0f);
         }
         else
@@ -122,11 +122,11 @@ public class Area : MonoBehaviour
             GameObject clone;
             if (matchCount == 3)
             { 
-                clone = (GameObject)Instantiate(excited, transform.position, Quaternion.identity);
+                clone = (GameObject)Instantiate(excited, new Vector2(transform.position.x, transform.position.y - .65f), Quaternion.identity);
             }
             else
             {
-                clone = (GameObject)Instantiate(happy, transform.position, Quaternion.identity);
+                clone = (GameObject)Instantiate(happy, new Vector2(transform.position.x, transform.position.y - .65f), Quaternion.identity);
             }
             Destroy(clone, 1.0f);
         }

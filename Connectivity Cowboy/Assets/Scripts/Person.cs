@@ -41,10 +41,10 @@ public class Person : MonoBehaviour
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.gameObject.name == "lassoCollison")rope();
+        if(collision.gameObject.tag == "Lasso")rope();
     }
     public void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.name == "lassoCollison") rope();
+        if (collision.gameObject.tag == "Lasso") rope();
     }
 
     private void FixedUpdate() {

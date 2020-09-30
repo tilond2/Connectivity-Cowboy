@@ -64,8 +64,8 @@ public class Spawner : MonoBehaviour
         //float y = Random.Range(yMin, yMax);
         float x = Random.Range(0.1f, 1.9f);
         if (x < 1f) {
-            x = -10.5f;
-        } else x = 10.5f;
+            x = -9f;
+        } else x = 9f;
         float y = Random.Range(-1.5f, 1.5f);
 
         Instantiate(people[i], new Vector3(x, y, 0), Quaternion.identity);
