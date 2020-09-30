@@ -33,6 +33,8 @@ public class Area : MonoBehaviour
 
     IEnumerator Talking()
     {
+        people[0].transform.position = new Vector2(transform.position.x - 1f, transform.position.y);
+        people[1].transform.position = new Vector2(transform.position.x - 1f, transform.position.y);
         yield return null;
     }
 }
