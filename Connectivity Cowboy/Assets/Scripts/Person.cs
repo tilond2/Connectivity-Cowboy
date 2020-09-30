@@ -61,11 +61,14 @@ public class Person : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.position.y < -13f || this.transform.position.y > 13f ){
+        if (this.transform.position.y < -13f || this.transform.position.y > 13f) {
+            roped = false;
+            if (ropeObject) ropeObject.caught = false;
             Delete();
         }
-        if (this.transform.position.x < -13f || this.transform.position.x > 13f )
-        {
+        if (this.transform.position.x < -13f || this.transform.position.x > 13f) {
+            roped = false;
+            if (ropeObject) ropeObject.caught = false;
             Delete();
         }
         //this.transform.position.Set(this.transform.position.x+1f,this.transform.position.y,this.transform.position.z);
