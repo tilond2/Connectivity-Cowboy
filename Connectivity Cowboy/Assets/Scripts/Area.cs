@@ -68,8 +68,24 @@ public class Area : MonoBehaviour
     }
     IEnumerator Checking()
     {
+        for (int i = 0; i< 14; i++)
+        {
+            yield return new WaitForSeconds(1);
+            if (!person2)
+            {
+                continue;
+            }
+            else
+            {
+                p1 = person1;
+                p2 = person2;
+                StartCoroutine(Talking());
 
-        yield return new WaitForSeconds(14);
+                person1 = null;
+                person2 = null;
+
+            }
+        }
         if (!person2)
         {
             if (person1)
@@ -78,19 +94,10 @@ public class Area : MonoBehaviour
                 person1 = null;
             }
         }
-        else
-        {
-            p1 = person1;
-            p2 = person2;
-            Talking();
-
-            person1 = null;
-            person2 = null;
-            
-        }
+        
     }
 
-    void Talking()
+    IEnumerator Talking()
     {
         
         p1.transform.position = new Vector2(transform.position.x - .6f, transform.position.y+.6f);
@@ -105,7 +112,7 @@ public class Area : MonoBehaviour
         //secondPerson.sitting = true;
 
         int matchCount = 0;
-        
+        yield return new WaitForSeconds(3);
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
