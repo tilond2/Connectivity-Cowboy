@@ -20,6 +20,7 @@ public class Person : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        walkDist = 10f;
         if (this.transform.position.x < 0) direction = 1f; else direction = -1f;
     }
 
