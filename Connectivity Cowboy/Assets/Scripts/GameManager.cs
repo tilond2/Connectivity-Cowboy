@@ -7,21 +7,51 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int score;
     private Text scoreCount;
+    public float timer;
+    public int time;
+    private Text timeDisplay;
+    bool timerRunning;
+    bool endGame;
     // Start is called before the first frame update
     void Start()
     {
         scoreCount = GameObject.Find("Score").GetComponent<Text>();
+        timeDisplay = GameObject.Find("Timer").GetComponent<Text>();
+        timer = 60f;
+        timerRunning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        scoreCount.text = score.ToString();
+        timeDisplay.text = time.ToString();
+
+        if (timerRunning)
+        {
+            timer -= Time.deltaTime;
+            time = Mathf.FloorToInt(timer);
+        }
         
+        if (timer < 0) { 
+            timerRunning = false;
+            endGame = true;
+        }
+        if (endGame == true)
+        {
+            StartCoroutine(EndGame());
+        }
+        
+
     }
 
     public void AddScore(int s)
     {
         score += s;
+    }
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(2);
     }
 
 

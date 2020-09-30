@@ -14,18 +14,22 @@ public class Attach : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        roped = collision.gameObject;
-        this.GetComponentInParent<Rope>().roped = roped;
-        this.GetComponentInParent<Rope>().caught = true;
+        if (collision.gameObject.GetComponent<Person>().canCatch)
+        {
+            roped = collision.gameObject;
+            this.GetComponentInParent<Rope>().roped = roped;
+            this.GetComponentInParent<Rope>().caught = true;
+            collision.gameObject.GetComponent<Person>().ropeObject = this.GetComponentInParent<Rope>();
+        }
         
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        roped = collision.gameObject;
-        this.GetComponentInParent<Rope>().roped = roped;
-        this.GetComponentInParent<Rope>().caught = true;
-    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        
+        //this.GetComponentInParent<Rope>().caught = false;
 
+    }
     // Update is called once per frame
     void Update()
     {

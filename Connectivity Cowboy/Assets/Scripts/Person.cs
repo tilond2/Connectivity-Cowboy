@@ -9,6 +9,8 @@ public class Person : MonoBehaviour
     public GameObject walk_1;
     public GameObject roped_0;
     public GameObject roped_1;
+    public Rope ropeObject;
+    public Area bench;
     public bool roped = false;
     public int frameRate = 100;
     public int frame = 0;
@@ -16,11 +18,18 @@ public class Person : MonoBehaviour
     public float direction = 1f;
     public float walkDist = 4f;
     public float traveled = 0f;
+    public List<string> Characteristics;
+    public string c1;
+    public string c2;
+    public string c3;
+    public bool canCatch = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        Characteristics = new List<string>(new string[] { c1, c2, c3});
         walkDist = 10f;
+        canCatch = true;
         if (this.transform.position.x < 0) direction = 1f; else direction = -1f;
     }
 
@@ -38,12 +47,23 @@ public class Person : MonoBehaviour
     private void FixedUpdate() {
        
     }
+    public void Delete()
+    {
+        roped = false;
+        ropeObject.caught = false;
+        bench.person1 = null;
+        Destroy(this.gameObject);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.position.x < -13f || this.transform.position.x > 13f){
-            Destroy(this);
+        if (this.transform.position.y < -13f || this.transform.position.y > 13f ){
+            Delete();
+        }
+        if (this.transform.position.x < -13f || this.transform.position.x > 13f )
+        {
+            Delete();
         }
         //this.transform.position.Set(this.transform.position.x+1f,this.transform.position.y,this.transform.position.z);
         if (traveled >= walkDist) {

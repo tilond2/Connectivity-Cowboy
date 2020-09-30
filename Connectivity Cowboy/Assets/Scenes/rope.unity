@@ -384,7 +384,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1159907305
@@ -659,6 +659,7 @@ GameObject:
   - component: {fileID: 1409233453}
   - component: {fileID: 1409233452}
   - component: {fileID: 1409233451}
+  - component: {fileID: 1409233454}
   m_Layer: 0
   m_Name: rope
   m_TagString: Untagged
@@ -678,7 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7573916dc059544bc82f9ea09a13d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 0}
+  lineRenderer: {fileID: 1409233452}
   ropeSegLen: 0.08
   segmentLength: 50
   lineWidth: 0.1
@@ -805,6 +806,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1409233454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409233450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a6c1f897bf49d468637a558adf2412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roped: {fileID: 0}
 --- !u!1 &1627620128
 GameObject:
   m_ObjectHideFlags: 0
