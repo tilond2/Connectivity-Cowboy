@@ -11,6 +11,10 @@ public class Spawner : MonoBehaviour
 
     [SerializeField]
     public GameObject person;
+    public float xMax = 12f;
+    public float xMin = -12f;
+    public float yMax = 3f;
+    public float yMin = -3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +27,10 @@ public class Spawner : MonoBehaviour
         
     }
 
-    
+    public void spawn() {
+        float x = Random.Range(xMin, xMax);
+        float y = Random.Range(yMin, yMax);
+
+        Instantiate(person, new Vector3(x, y, 0), Quaternion.identity);
+    }
 }

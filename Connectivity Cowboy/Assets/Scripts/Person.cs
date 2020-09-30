@@ -20,7 +20,8 @@ public class Person : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        walkDist = 10f;
+        if (this.transform.position.x < 0) direction = 1f; else direction = -1f;
     }
 
     public void rope() {
@@ -41,6 +42,9 @@ public class Person : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.transform.position.x < -13f || this.transform.position.x > 13f){
+            Destroy(this);
+        }
         //this.transform.position.Set(this.transform.position.x+1f,this.transform.position.y,this.transform.position.z);
         if (traveled >= walkDist) {
             direction = -direction;
