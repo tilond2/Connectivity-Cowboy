@@ -53,7 +53,7 @@ public class Person : MonoBehaviour
     {
         roped = false;
         if (ropeObject) ropeObject.caught = false;
-        bench.person1 = null;
+        if (bench) bench.person1 = null;
         Destroy(this.gameObject);
     }
 
