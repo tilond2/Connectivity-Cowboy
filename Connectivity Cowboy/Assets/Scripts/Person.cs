@@ -25,6 +25,7 @@ public class Person : MonoBehaviour
     public string c3;
     public bool canCatch = true;
     public bool sitting;
+    public GameObject self;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,7 @@ public class Person : MonoBehaviour
         roped = false;
         if (ropeObject) ropeObject.caught = false;
         bench.person1 = null;
-        Destroy(this.gameObject);
+        Destroy(self);
     }
 
 
@@ -62,10 +63,14 @@ public class Person : MonoBehaviour
     void Update()
     {
         if (this.transform.position.y < -13f || this.transform.position.y > 13f ){
+            roped = false;
+            if (ropeObject) ropeObject.caught = false;
             Delete();
         }
         if (this.transform.position.x < -13f || this.transform.position.x > 13f )
         {
+            roped = false;
+            if (ropeObject) ropeObject.caught = false;
             Delete();
         }
         //this.transform.position.Set(this.transform.position.x+1f,this.transform.position.y,this.transform.position.z);
