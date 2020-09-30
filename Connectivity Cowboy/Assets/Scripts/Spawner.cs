@@ -14,6 +14,8 @@ public class Spawner : MonoBehaviour
     public List<GameObject> people;
     public GameObject person;
     GameManager gm;
+    public GameObject leftSpawn;
+    public GameObject rightSpawn;
     bool spawnCheck;
     bool s = false;
     public float xMax = 12f;
@@ -59,7 +61,9 @@ public class Spawner : MonoBehaviour
     public void spawn() {
         int i = Random.Range(0, people.Count);
         float x = Random.Range(xMin, xMax);
-        float y = Random.Range(yMin, yMax);
+        //float y = Random.Range(yMin, yMax);
+
+        float y = Random.Range(-1.5f, 1.5f);
 
         Instantiate(people[i], new Vector3(x, y, 0), Quaternion.identity);
     }
