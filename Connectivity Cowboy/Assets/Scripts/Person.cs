@@ -9,6 +9,7 @@ public class Person : MonoBehaviour
     public GameObject walk_1;
     public GameObject roped_0;
     public GameObject roped_1;
+    public GameObject sit;
     public Rope ropeObject;
     public Area bench;
     public bool roped = false;
@@ -23,14 +24,15 @@ public class Person : MonoBehaviour
     public string c2;
     public string c3;
     public bool canCatch = true;
+    public bool sitting;
 
     // Start is called before the first frame update
     void Start()
     {
-        Characteristics = new List<string>(new string[] { c1, c2, c3});
+        Characteristics = new List<string>(new string[3] { c1, c2, c3});
         walkDist = 10f;
         canCatch = true;
-        if (this.transform.position.x < 0) direction = 1f; else direction = -1f;
+        if (this.transform.position.x < 0) direction = 1f; else { direction = -1f; transform.localScale = new Vector3(-0.5f, 0.5f, 1); }
     }
 
     public void rope() {
@@ -50,10 +52,11 @@ public class Person : MonoBehaviour
     public void Delete()
     {
         roped = false;
-        ropeObject.caught = false;
+        if (ropeObject) ropeObject.caught = false;
         bench.person1 = null;
         Destroy(this.gameObject);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -68,6 +71,7 @@ public class Person : MonoBehaviour
         //this.transform.position.Set(this.transform.position.x+1f,this.transform.position.y,this.transform.position.z);
         if (traveled >= walkDist) {
             direction = -direction;
+            transform.localScale = new Vector3(-0.5f, 0.5f, 1);
             walk_0.GetComponent<SpriteRenderer>().flipX = !walk_0.GetComponent<SpriteRenderer>().flipX;
             walk_1.GetComponent<SpriteRenderer>().flipX = !walk_1.GetComponent<SpriteRenderer>().flipX;
             roped_0.GetComponent<SpriteRenderer>().flipX = !roped_0.GetComponent<SpriteRenderer>().flipX;
@@ -77,21 +81,33 @@ public class Person : MonoBehaviour
         }
 
         if (frame > frameRate) {
-            if (roped) {
+            if (roped)
+            {
                 walk_0.SetActive(false);
                 walk_1.SetActive(false);
                 roped_0.SetActive(state);
                 roped_1.SetActive(!state);
                 state = !state;
-                
-            } else {
+
+            }
+            else if (sitting)
+            {
+                sit.SetActive(true);
+                walk_0.SetActive(false);
+                walk_1.SetActive(false);
+                roped_0.SetActive(false);
+                roped_1.SetActive(false);
+            }
+            else
+            {
                 walk_0.SetActive(state);
                 walk_1.SetActive(!state);
                 roped_0.SetActive(false);
                 roped_1.SetActive(false);
                 state = !state;
-                this.transform.Translate(new Vector3(direction*.25f, 0f, 0f));
+                this.transform.Translate(new Vector3(direction * .25f, 0f, 0f));
                 traveled += .25f;
+            
             }
             frame = 0;
         }

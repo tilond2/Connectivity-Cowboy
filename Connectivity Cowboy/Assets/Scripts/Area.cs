@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
-
+using UnityEngine.Tilemaps;
 
 public class Area : MonoBehaviour
 {
@@ -16,6 +16,7 @@ public class Area : MonoBehaviour
     public GameObject happy;
     public GameObject excited;
     private GameManager gm;
+    bool checking;
     
     public bool isCoroutineReady;
 
@@ -23,6 +24,7 @@ public class Area : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class Area : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Person")
+        if (collision.gameObject.tag == "Person" && !checking)
         {
             collision.gameObject.GetComponent<Person>().bench = this;
             if(!ReferenceEquals(person1, collision.gameObject)){
@@ -41,25 +43,48 @@ public class Area : MonoBehaviour
                 else { person1 = collision.gameObject; }
             }
             person1.transform.position = new Vector2(transform.position.x - 1f, transform.position.y - 1f);
-            person1.GetComponent<Person>().ropeObject.caught = false;
-            person1.GetComponent<Person>().canCatch = false;
+            if (person1.GetComponent<Person>().ropeObject) { person1.GetComponent<Person>().ropeObject.caught = false; person1.GetComponent<Person>().ropeObject = null; }
+
+                person1.GetComponent<Person>().canCatch = false;
             if (person2) {
                 person2.transform.position = new Vector2(transform.position.x + 1f, transform.position.y - 1f);
-                person2.GetComponent<Person>().ropeObject.caught = false;
+                if (person1.GetComponent<Person>().ropeObject) { person1.GetComponent<Person>().ropeObject.caught = false; person1.GetComponent<Person>().ropeObject = null; }
+
                 person2.GetComponent<Person>().canCatch = false;
             };
             StartCoroutine(Checking());
+            
             
 
         }
     }
     IEnumerator Checking()
     {
-        yield return new WaitForSeconds(10);
+        checking = true;
+        for (int i = 0; i < 13; i++)
+        {
+            yield return new WaitForSeconds(1);
+            if (!person2)
+            {
+                continue;
+            }
+            else
+            {
+                p1 = person1;
+                p2 = person2;
+                person1 = null;
+                person2 = null;
+                StartCoroutine(Talking());
+            }
+        }
         if (!person2)
         {
-            person1.GetComponent<Person>().Delete();
-            person1 = null;
+            if (person1)
+            {
+                person1.GetComponent<Person>().Delete();
+                person1 = null;
+            }
+
         }
         else
         {
@@ -68,29 +93,36 @@ public class Area : MonoBehaviour
             person1 = null;
             person2 = null;
             StartCoroutine(Talking());
+
         }
+
     }
 
     IEnumerator Talking()
     {
         p1.transform.position = new Vector2(transform.position.x - 1f, transform.position.y-1f);
-        p2.transform.position = new Vector2(transform.position.x - 1f, transform.position.y - 1f);
+        p2.transform.position = new Vector2(transform.position.x + 1f, transform.position.y - 1f);
 
         Person firstPerson = p1.GetComponent<Person>();
         Person secondPerson = p2.GetComponent<Person>();
 
         firstPerson.ropeObject.caught = false;
         secondPerson.ropeObject.caught = false;
+        firstPerson.sitting = true;
+        secondPerson.sitting = true;
 
         int matchCount = 0;
-
-        yield return new WaitForSeconds(2);
-        for (int i = 0; i < secondPerson.Characteristics.Count; i++)
+        
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < 3; i++)
         {
-            int j = 0;
-            if (firstPerson.Characteristics[j] == secondPerson.Characteristics[i])
+            for (int j = 0; i < 3; j++)
             {
-                matchCount += 1;
+                if (firstPerson.Characteristics[j] == secondPerson.Characteristics[i])
+                {
+                    matchCount += 1;
+                    break;
+                }
             }
         }
         if (matchCount == 0)
@@ -117,6 +149,7 @@ public class Area : MonoBehaviour
         secondPerson.Delete();
         p1 = null;
         p2 = null;
+        checking = false;
        
     }
 }

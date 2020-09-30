@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: 987a19fd6a5fc7c4cb6a8b9ccd8a4314
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -694942332400406677
+    second: gb person walk_0
+  - first:
+      213: 9081707694872964109
+    second: gb person walk_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -87,7 +93,49 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: gb person walk_0
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 308
+        width: 72
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6f64e171a11b56f0800000000000000
+      internalID: -694942332400406677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gb person walk_1
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 3
+        width: 112
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0ca5d21805b80e70800000000000000
+      internalID: 9081707694872964109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

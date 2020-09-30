@@ -35,7 +35,7 @@ public class Rope : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         //this.GetComponent<CircleCollider2D>(). = lassoCollision.transform.position;
-        if(!caught && Input.GetMouseButtonDown(0)){ active = !active; }
+        if(!caught && Input.GetMouseButtonDown(0)){ active = !active; GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound("whoosh", false); }
         if (caught) active = true;
         this.DrawRope();
         //this.ropeSegments[this.segmentLength - 3] = new Vector3 Camera.main.ScreenToWorldPoint(Input.mousePosition);

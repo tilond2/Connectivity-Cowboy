@@ -20,7 +20,6 @@ public class Spawner : MonoBehaviour
     public float xMin = -12f;
     public float yMax = 3f;
     public float yMin = -2f;
-    List<float> xLocations;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +28,7 @@ public class Spawner : MonoBehaviour
         spawn();
         spawn();
         spawn();
-        xLocations[0] = -13f;
-        xLocations[1] = 13f;
+
         
     }
 

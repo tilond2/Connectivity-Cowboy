@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
@@ -12,13 +13,15 @@ public class GameManager : MonoBehaviour
     private Text timeDisplay;
     bool timerRunning;
     bool endGame;
+
     // Start is called before the first frame update
     void Start()
     {
         scoreCount = GameObject.Find("Score").GetComponent<Text>();
         timeDisplay = GameObject.Find("Timer").GetComponent<Text>();
-        timer = 60f;
+        timer = 80f;
         timerRunning = true;
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound("music", false);
     }
 
     // Update is called once per frame
@@ -51,7 +54,8 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
